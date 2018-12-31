@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import Header from '../Header/Header';
 import CharacterCard from '../CharacterCard/CharacterCard';
+import Footer from '../Footer/Footer';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -69,6 +70,7 @@ class App extends Component {
           </button>
         </section>
         {JSON.stringify(this.props.reduxState.search)}
+        <Footer />
       </div>
     );
   }
