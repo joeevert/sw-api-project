@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
+   footer: {
+     marginTop: 75,
+     textAlign: 'center'
+   }
 };
 
 class Footer extends Component {
@@ -12,7 +16,7 @@ class Footer extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <p>Star Wars and all associated names and/or images are copyright Lucasfilm Ltd. Images were freely collected from Wookiepedia.</p>
+        <p className={classes.footer}>Star Wars and all associated names and/or images are copyright Lucasfilm Ltd.</p>
       </div>
     );
   }

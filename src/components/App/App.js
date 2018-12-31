@@ -68,9 +68,9 @@ class App extends Component {
           <button className="randomButton" onClick={this.handleClick}>
             Random Character
           </button>
+          <Footer />
         </section>
         {JSON.stringify(this.props.reduxState.search)}
-        <Footer />
       </div>
     );
   }
