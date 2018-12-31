@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
+import Header from '../Header/Header';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -21,13 +22,13 @@ class App extends Component {
     this.props.dispatch({ type: 'FETCH_SEARCH' })
   }
 
-  handleChange = (event) => {
-    console.log('in handleChange');
-    this.setState({
-      ...this.state,
-      [event.target.name]: event.target.value,
-    })
-  }
+  // handleChange = (event) => {
+  //   console.log('in handleChange');
+  //   this.setState({
+  //     ...this.state,
+  //     [event.target.name]: event.target.value,
+  //   })
+  // }
 
   toFeet = (height) => {
     console.log('mass', height);
@@ -60,7 +61,7 @@ class App extends Component {
     return (
       <div>
         <section className="App-section">
-          <img className="logo" src={`/images/2000px-Star_Wars_Yellow_Logo.svg.png`}/>
+          <Header />
           <div className="infoContainer">
             {this.props.reduxState.search.url && 
             <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`}/>}
