@@ -17,7 +17,7 @@ class Header extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <img className={classes.logo} src={`/images/2000px-Star_Wars_Yellow_Logo.svg.png`}/>
+        <img className={classes.logo} src={`/images/2000px-Star_Wars_Yellow_Logo.svg.png`} alt="Star Wars" />
       </div>
     );
   }

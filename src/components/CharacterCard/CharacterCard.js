@@ -55,7 +55,7 @@ class CharacterCard extends Component {
     return (
       <div className="infoContainer">
         {this.props.reduxState.search.url && 
-        <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`}/>}
+        <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`} alt={this.props.reduxState.search.name} />}
         <div className="info">
           <h1>Name: {this.props.reduxState.search.name}</h1>
           <h1>Height: {this.toFeet(this.props.reduxState.search.height)}</h1>

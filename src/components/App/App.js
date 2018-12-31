@@ -58,7 +58,6 @@ class App extends Component {
 }
 
   render() {
-    let regex = /[0-9]/g;
     const { classes } = this.props;
     return (
       <div>
