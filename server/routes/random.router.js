@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 
 router.get('/', (req, res) => {
-    let random = Math.floor((Math.random() * 87) + 1);
+    let random = Math.floor((Math.random() * 88) + 1);
     console.log('random', random);
     axios.get(`https://swapi.co/api/people/${random}`)
     .then((response) => {

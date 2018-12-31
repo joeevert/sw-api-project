@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
 
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+
+};
+
 class App extends Component {
   state = {
   }
@@ -23,9 +29,34 @@ class App extends Component {
     })
   }
 
+  toFeet = (height) => {
+    console.log('mass', height);
+    if( height === 'unknown' ){
+      return 'unknown'
+    }
+    else {
+    let realFeet = ((height * 0.393700) / 12);
+    let feet = Math.floor(realFeet);
+    let inches = Math.round((realFeet - feet) * 12);
+    return `${feet}'${inches}"`;
+    }
+  }
+
+  toPounds = (mass) => {
+    if( mass === 'unknown' ){
+      return 'unknown'
+    }
+    else {
+    let regex = /,/g;
+    let newMass = parseFloat(mass.replace(regex, ''));
+    let pounds = newMass * 2.20462;
+    return `${Math.round(pounds)} lbs`;
+  }
+}
+
   render() {
     let regex = /[0-9]/g;
-  
+    const { classes } = this.props;
     return (
       <div>
         <section className="App-section">
@@ -35,17 +66,17 @@ class App extends Component {
             <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`}/>}
             <div className="info">
               <h1>Name: {this.props.reduxState.search.name}</h1>
-              <h1>Height: {this.props.reduxState.search.height}</h1>
-              <h1>Mass: {this.props.reduxState.search.mass}</h1>
+              <h1>Height: {this.toFeet(this.props.reduxState.search.height)}</h1>
+              {this.props.reduxState.search.mass && 
+              <h1>Mass: {this.toPounds(this.props.reduxState.search.mass)}</h1>}
               <h1>Gender: {this.props.reduxState.search.gender}</h1>
-
             </div>
           </div>
           <button className="randomButton" onClick={this.handleClick}>
             Random Character
           </button>
         </section>
-        {/* {JSON.stringify(this.props.reduxState.search)} */}
+        {JSON.stringify(this.props.reduxState.search)}
       </div>
     );
   }
@@ -53,4 +84,4 @@ class App extends Component {
 
 const mapReduxToProps = reduxState => ({reduxState});
 
-export default connect(mapReduxToProps)(App);
+export default connect(mapReduxToProps)(withStyles(styles)(App));
