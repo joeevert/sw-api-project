@@ -11,7 +11,7 @@ const styles = {
   }
 };
 
-class App extends Component {
+class Header extends Component {
 
   render() {
     const { classes } = this.props;
@@ -25,4 +25,4 @@ class App extends Component {
 
 const mapReduxToProps = reduxState => ({reduxState});
 
-export default connect(mapReduxToProps)(withStyles(styles)(App));
+export default connect(mapReduxToProps)(withStyles(styles)(Header));

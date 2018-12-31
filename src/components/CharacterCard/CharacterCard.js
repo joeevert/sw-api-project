@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
 import {connect} from 'react-redux';
-import Header from '../Header/Header';
-import CharacterCard from '../CharacterCard/CharacterCard';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -10,12 +7,8 @@ const styles = {
 
 };
 
-class App extends Component {
+class CharacterCard extends Component {
   state = {
-  }
-
-  componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_SEARCH' })
   }
 
   handleClick = (event) => {
@@ -53,22 +46,23 @@ class App extends Component {
     let newMass = parseFloat(mass.replace(regex, ''));
     let pounds = newMass * 2.20462;
     return `${Math.round(pounds)} lbs`;
+    }
   }
-}
 
   render() {
     let regex = /[0-9]/g;
     const { classes } = this.props;
     return (
-      <div>
-        <section className="App-section">
-          <Header />
-          <CharacterCard />
-          <button className="randomButton" onClick={this.handleClick}>
-            Random Character
-          </button>
-        </section>
-        {JSON.stringify(this.props.reduxState.search)}
+      <div className="infoContainer">
+        {this.props.reduxState.search.url && 
+        <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`}/>}
+        <div className="info">
+          <h1>Name: {this.props.reduxState.search.name}</h1>
+          <h1>Height: {this.toFeet(this.props.reduxState.search.height)}</h1>
+          {this.props.reduxState.search.mass && 
+          <h1>Mass: {this.toPounds(this.props.reduxState.search.mass)}</h1>}
+          <h1>Gender: {this.props.reduxState.search.gender}</h1>
+        </div>
       </div>
     );
   }
@@ -76,4 +70,4 @@ class App extends Component {
 
 const mapReduxToProps = reduxState => ({reduxState});
 
-export default connect(mapReduxToProps)(withStyles(styles)(App));
+export default connect(mapReduxToProps)(withStyles(styles)(CharacterCard));
