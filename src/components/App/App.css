@@ -1,0 +1,42 @@
+.App-section {
+  background-color: #000;
+  padding: 20px;
+  color: white;
+  /* text-align: center; */
+}
+
+.logo {
+  display: block;
+  margin: 50px auto 100px;
+  width: 50%;
+}
+
+.randomButton {
+  width: 400px;
+  display: block;
+  margin: 25px auto;
+  border: 3px solid #ffe81f;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.randomButton:hover {
+  background-color: #ffe81f;
+  color: #000;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.info{ 
+  margin: 0px 0px 0px 50px;
+}
+
+.infoImage {
+}
