@@ -82,8 +82,37 @@ class CharacterCard extends Component {
             Weight: {this.toPounds(this.props.reduxState.search.mass)}
           </Typography>}
           <Typography variant="subtitle1" color="textSecondary">
+            Hair Color: {this.props.reduxState.search.hair_color}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Skin Color: {this.props.reduxState.search.skin_color}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Eye Color: {this.props.reduxState.search.eye_color}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Birth Year: {this.props.reduxState.search.birth_year}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
             Gender: {this.props.reduxState.search.gender}
           </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Homeworld: {this.props.reduxState.search.homeworld}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Species: {this.props.reduxState.search.species}
+          </Typography>
+          {/* <Typography variant="subtitle1" color="textSecondary">
+            Films: {this.props.reduxState.search.films}
+          </Typography>
+          {this.props.reduxState.search.vehicles &&
+          <Typography variant="subtitle1" color="textSecondary">
+            Vehicles: {this.props.reduxState.search.vehicles}
+          </Typography>}
+          {this.props.reduxState.search.starships &&
+          <Typography variant="subtitle1" color="textSecondary">
+            Starships: {this.props.reduxState.search.starships}
+          </Typography>} */}
         </div>
       </div>
     );
