@@ -6,8 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   logo: {
     display: 'block',
-    margin: '50px auto 100px',
-    width: '30%',
+    margin: '100px auto',
+    maxWidth: '40%',
   }
 };
 

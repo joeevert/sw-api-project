@@ -5,14 +5,7 @@
   margin: auto;
 }
 
-.logo {
-  display: block;
-  margin: 50px auto 100px;
-  width: 30%;
-}
-
 .randomButton {
-  width: 400px;
   display: block;
   margin: 25px auto;
   border: 3px solid #ffe81f;
@@ -27,20 +20,4 @@
 .randomButton:hover {
   background-color: #ffe81f;
   color: #000;
-}
-
-.infoContainer {
-  width: 65%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  border: 3px solid #ffe81f;
-  border-radius: 5px;
-}
-
-.info{ 
-  margin: 0px 0px 0px 50px;
-}
-
-.infoImage {
 }
