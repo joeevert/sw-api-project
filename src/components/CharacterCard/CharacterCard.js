@@ -7,15 +7,20 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   card: {
-    border: '3px solid #ffe81f'
+    margin: '0px 25px 25px 25px',
+    border: '3px solid #ffe81f',
+    borderRadius: '10px',
+    backgroundColor: '#fff',
   },
   image: {
     width: '100%',
     height: 'auto',
+    borderRadius: '10px 10px 0px 0px'
   },
   container: {
     backgroundColor: '#fff',
-    padding: '20px 20px'
+    padding: '20px 20px',
+    borderRadius: '0px 0px 10px 10px'
   }
 });
 
@@ -76,6 +81,9 @@ class CharacterCard extends Component {
           <Typography variant="subtitle1" color="textSecondary">
             Weight: {this.toPounds(this.props.reduxState.search.mass)}
           </Typography>}
+          <Typography variant="subtitle1" color="textSecondary">
+            Gender: {this.props.reduxState.search.gender}
+          </Typography>
         </div>
       </div>
     );
