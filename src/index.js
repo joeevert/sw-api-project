@@ -15,7 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // Reducer that holds our results
 const search = (state = {}, action) => {
-    if(action.type === 'SET_SEARCH') {
+    if(action.type === 'SET_PEOPLE') {
         return action.payload;
     }
     return state;
@@ -24,7 +24,7 @@ const search = (state = {}, action) => {
 function* fetchSwapi(action) {
     try {
       const response = yield call(axios.get, '/random');
-      yield put({type: 'SET_SEARCH', payload: response.data});
+      yield put({type: 'SET_PEOPLE', payload: response.data});
       console.log('fetchSwapi', response.data);
     } 
     catch (error) {
@@ -33,7 +33,7 @@ function* fetchSwapi(action) {
   };
 
 function* watcherSaga() {
-    yield takeEvery( 'FETCH_SEARCH', fetchSwapi) ;
+    yield takeEvery( 'FETCH_PEOPLE', fetchSwapi) ;
 }
 
 // Create one store that all components can use

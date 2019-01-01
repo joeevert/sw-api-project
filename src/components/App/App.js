@@ -19,12 +19,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_SEARCH' })
+    this.props.dispatch({ type: 'FETCH_PEOPLE' })
   }
 
   handleClick = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: 'FETCH_SEARCH' })
+    this.props.dispatch({ type: 'FETCH_PEOPLE' })
   }
 
   render() {
