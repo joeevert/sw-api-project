@@ -6,9 +6,12 @@ import CharacterCard from '../CharacterCard/CharacterCard';
 import Footer from '../Footer/Footer';
 
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
-
+  center: {
+    margin: 'auto'
+  }
 };
 
 class App extends Component {
@@ -24,53 +27,24 @@ class App extends Component {
     this.props.dispatch({ type: 'FETCH_SEARCH' })
   }
 
-  // handleChange = (event) => {
-  //   console.log('in handleChange');
-  //   this.setState({
-  //     ...this.state,
-  //     [event.target.name]: event.target.value,
-  //   })
-  // }
-
-  toFeet = (height) => {
-    console.log('mass', height);
-    if( height === 'unknown' ){
-      return 'unknown'
-    }
-    else {
-    let realFeet = ((height * 0.393700) / 12);
-    let feet = Math.floor(realFeet);
-    let inches = Math.round((realFeet - feet) * 12);
-    return `${feet}'${inches}"`;
-    }
-  }
-
-  toPounds = (mass) => {
-    if( mass === 'unknown' ){
-      return 'unknown'
-    }
-    else {
-    let regex = /,/g;
-    let newMass = parseFloat(mass.replace(regex, ''));
-    let pounds = newMass * 2.20462;
-    return `${Math.round(pounds)} lbs`;
-  }
-}
-
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <section className="App-section">
-          <Header />
-          <CharacterCard />
-          <button className="randomButton" onClick={this.handleClick}>
-            Random Character
-          </button>
-          <Footer />
-        </section>
-        {JSON.stringify(this.props.reduxState.search)}
-      </div>
+      <section className="App-section">
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Header />
+          </Grid>
+        <div className={classes.center}>
+            <CharacterCard />
+            <button className="randomButton" onClick={this.handleClick}>
+              Random Character
+            </button>
+            <Footer />
+          {/* {JSON.stringify(this.props.reduxState.search)} */}
+        </div>
+        </Grid>
+      </section>
     );
   }
 }

@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
-const styles = {
-
-};
+const styles = theme => ({
+  card: {
+    border: '3px solid #ffe81f'
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
+  },
+  container: {
+    backgroundColor: '#fff',
+    padding: '20px 20px'
+  }
+});
 
 class CharacterCard extends Component {
   state = {
+    
   }
 
   handleClick = (event) => {
     event.preventDefault();
     this.props.dispatch({ type: 'FETCH_SEARCH' })
   }
-
-  // handleChange = (event) => {
-  //   console.log('in handleChange');
-  //   this.setState({
-  //     ...this.state,
-  //     [event.target.name]: event.target.value,
-  //   })
-  // }
 
   toFeet = (height) => {
     console.log('mass', height);
@@ -53,19 +58,33 @@ class CharacterCard extends Component {
     let regex = /[0-9]/g;
     const { classes } = this.props;
     return (
-      <div className="infoContainer">
+      <div className={classes.card}>
         {this.props.reduxState.search.url && 
-        <img src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`} alt={this.props.reduxState.search.name} />}
-        <div className="info">
-          <h1>Name: {this.props.reduxState.search.name}</h1>
-          <h1>Height: {this.toFeet(this.props.reduxState.search.height)}</h1>
-          {this.props.reduxState.search.mass && 
-          <h1>Mass: {this.toPounds(this.props.reduxState.search.mass)}</h1>}
-          <h1>Gender: {this.props.reduxState.search.gender}</h1>
+        <img
+          className={classes.image}
+          src={`/images/characters/${this.props.reduxState.search.url.match(regex).join('')}.jpg`}
+          alt={this.props.reduxState.search.name}
+        />}
+        <div className={classes.container}>
+          <Typography component="h5" variant="h5">
+            {this.props.reduxState.search.name}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Height: {this.toFeet(this.props.reduxState.search.height)}
+          </Typography>
+          {this.props.reduxState.search.mass &&
+          <Typography variant="subtitle1" color="textSecondary">
+            Weight: {this.toPounds(this.props.reduxState.search.mass)}
+          </Typography>}
         </div>
       </div>
     );
   }
+}
+
+CharacterCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 }
 
 const mapReduxToProps = reduxState => ({reduxState});
